@@ -35,24 +35,13 @@ jobs:
       run: |
         export PYTHONPATH=src
         pytest
-    - name: Login to DockerHub
-      uses: docker/login-action@v1
+    - name: Push docker image to dockerhub
+      uses: mr-smithers-excellent/docker-build-push@v4
       with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    #- name: Push docker image to dockerhub
-    #  uses: mr-smithers-excellent/docker-build-push@v4
-    #  with:
-    #      image: mitdosi8919/practicedocker 
-    #      registry: docker.io
-    #      username: ${{ secrets.DOCKER_USERNAME }}
-    #      password: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build and push
-      uses: docker/build-push-action@v2
-      with:
+          image: mitdosi8919/practicedocker 
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64,linux/386
-          push: true
-          tags: user/app:latest        
-        
+    
