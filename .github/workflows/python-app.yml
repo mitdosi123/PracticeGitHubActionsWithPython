@@ -49,3 +49,6 @@ jobs:
         name: mitdosi8919/practicedocker
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        context: .
+        file: ./Dockerfile
+        push: true
