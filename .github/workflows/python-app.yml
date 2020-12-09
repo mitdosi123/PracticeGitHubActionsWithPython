@@ -35,11 +35,11 @@ jobs:
       run: |
         export PYTHONPATH=src
         pytest
-    - name: Login to DockerHub
-      uses: docker/login-action@v1
-      with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    #- name: Login to DockerHub
+    #  uses: docker/login-action@v1
+    #  with:
+    #      username: ${{ secrets.DOCKERHUB_USERNAME }}
+    #      password: ${{ secrets.DOCKERHUB_PASSWORD }}
     - name: Push docker image to dockerhub
       uses: docker/build-push-action@v2
       with:
